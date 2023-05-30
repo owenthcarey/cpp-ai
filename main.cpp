@@ -1,19 +1,21 @@
 #include <iostream>
 #include "ml/LinearRegression.h"
 
-int main() {
-    // Generate dummy data
-    // 100 samples, 3 features each
+// Function to test the linear-regression model.
+// This function generates a set of dummy data with 100 samples and 3 features each, where
+// the target values are the sum of the features. It creates a LinearRegression model and
+// trains it using the dummy data with a learning rate of 0.01 and 1000 iterations. Then
+// it makes predictions on the same data and displays the predictions.
+void testLinearRegression() {
     Eigen::MatrixXd X = Eigen::MatrixXd::Random(100, 3);
-    // Target values are sum of features
     Eigen::VectorXd y = X.rowwise().sum();
-    // Create Linear Regression model
     LinearRegression lr;
-    // Train the model with learning rate 0.01 and 1000 iterations
     lr.train(X, y, 0.01, 1000);
-    // Make predictions on the same data
     Eigen::VectorXd y_pred = lr.predict(X);
-    // Display the predictions
     std::cout << "Predictions: \n" << y_pred << std::endl;
+}
+
+int main() {
+    testLinearRegression();
     return 0;
 }
