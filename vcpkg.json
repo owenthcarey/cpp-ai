@@ -1,0 +1,9 @@
+{
+  "name": "cpp-ai",
+  "version-string": "0.1.0",
+  "homepage": "https://github.com/owenthcarey/cpp-ai",
+  "description": "A project implementing various machine-learning and deep-learning algorithms in C++",
+  "dependencies": [
+    "eigen3"
+  ]
+}
