@@ -1,0 +1,6 @@
+---
+Checks: '-*,google-*'
+WarningsAsErrors: ''
+HeaderFilterRegex: ''
+FormatStyle: google
+...
