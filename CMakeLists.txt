@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 
 # The path to vcpkg.cmake file provided by `vcpkg integrate install`
-set(CMAKE_TOOLCHAIN_FILE /home/owenthcarey/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE STRING "Vcpkg toolchain file")
+set(CMAKE_TOOLCHAIN_FILE /Users/owenthcarey/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE STRING "Vcpkg toolchain file")
 
 project(cpp_ai)
 
