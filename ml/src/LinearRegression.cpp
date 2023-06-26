@@ -2,7 +2,7 @@
 // Created by owenthcarey on 5/28/23.
 //
 
-#include "LinearRegression.h"
+#include "../include/LinearRegression.h"
 
 // Default constructor that initializes bias to 0.
 LinearRegression::LinearRegression() : bias(0) {}

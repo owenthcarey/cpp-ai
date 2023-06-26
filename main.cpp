@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ml/LinearRegression.h"
+#include "ml/include/LinearRegression.h"
 
 // Function to test the linear-regression model.
 // This function generates a set of dummy data with 100 samples and 3 features each, where
