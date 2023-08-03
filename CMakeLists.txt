@@ -9,7 +9,9 @@ set(CMAKE_CXX_STANDARD 23)
 
 find_package(Eigen3 CONFIG REQUIRED)
 
-add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegression.h)
+add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegression.h
+        ml/src/LogisticRegression.cpp
+        ml/include/LogisticRegression.h)
 
 # Link Eigen3 to your target
 target_link_libraries(cpp_ai Eigen3::Eigen)
