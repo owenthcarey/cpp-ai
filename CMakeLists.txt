@@ -13,7 +13,9 @@ add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegr
         ml/src/LogisticRegression.cpp
         ml/include/LogisticRegression.h
         ml/src/KNearestNeighbors.cpp
-        ml/include/KNearestNeighbors.h)
+        ml/include/KNearestNeighbors.h
+        ml/src/SupportVectorMachine.cpp
+        ml/include/SupportVectorMachine.h)
 
 # Link Eigen3 to your target
 target_link_libraries(cpp_ai Eigen3::Eigen)
