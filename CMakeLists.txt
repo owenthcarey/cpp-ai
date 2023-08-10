@@ -19,7 +19,9 @@ add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegr
         ml/src/KMeansClustering.cpp
         ml/include/KMeansClustering.h
         dl/src/NeuralNetwork.cpp
-        dl/include/NeuralNetwork.h)
+        dl/include/NeuralNetwork.h
+        dl/src/ConvolutionalNeuralNetwork.cpp
+        dl/include/ConvolutionalNeuralNetwork.h)
 
 # Link Eigen3 to your target
 target_link_libraries(cpp_ai Eigen3::Eigen)
