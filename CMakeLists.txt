@@ -21,7 +21,9 @@ add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegr
         dl/src/NeuralNetwork.cpp
         dl/include/NeuralNetwork.h
         dl/src/ConvolutionalNeuralNetwork.cpp
-        dl/include/ConvolutionalNeuralNetwork.h)
+        dl/include/ConvolutionalNeuralNetwork.h
+        dl/src/RecurrentNeuralNetwork.cpp
+        dl/include/RecurrentNeuralNetwork.h)
 
 # Link Eigen3 to your target
 target_link_libraries(cpp_ai Eigen3::Eigen)
