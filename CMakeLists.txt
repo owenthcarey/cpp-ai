@@ -25,7 +25,9 @@ add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegr
         dl/src/RecurrentNeuralNetwork.cpp
         dl/include/RecurrentNeuralNetwork.h
         dl/src/GenerativeAdversarialNetwork.cpp
-        dl/include/GenerativeAdversarialNetwork.h)
+        dl/include/GenerativeAdversarialNetwork.h
+        dl/src/Autoencoder.cpp
+        dl/include/Autoencoder.h)
 
 # Link Eigen3 to your target
 target_link_libraries(cpp_ai Eigen3::Eigen)
