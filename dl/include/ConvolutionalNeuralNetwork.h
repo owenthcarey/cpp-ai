@@ -7,7 +7,11 @@
 
 
 class ConvolutionalNeuralNetwork {
+private:
+    // TODO
 
+public:
+    ConvolutionalNeuralNetwork();
 };
 
 

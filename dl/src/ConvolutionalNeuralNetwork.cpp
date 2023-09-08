@@ -3,3 +3,7 @@
 //
 
 #include "../include/ConvolutionalNeuralNetwork.h"
+
+ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork() {
+    // TODO
+}

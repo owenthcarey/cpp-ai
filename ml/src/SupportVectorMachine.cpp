@@ -3,3 +3,7 @@
 //
 
 #include "../include/SupportVectorMachine.h"
+
+SupportVectorMachine::SupportVectorMachine() {
+    // TODO
+}

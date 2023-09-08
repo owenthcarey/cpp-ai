@@ -3,3 +3,7 @@
 //
 
 #include "../include/KNearestNeighbors.h"
+
+KNearestNeighbors::KNearestNeighbors() {
+    // TODO
+}

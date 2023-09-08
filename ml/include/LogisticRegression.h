@@ -7,7 +7,11 @@
 
 
 class LogisticRegression {
+private:
+    // TODO
 
+public:
+    LogisticRegression();
 };
 
 

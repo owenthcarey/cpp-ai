@@ -7,7 +7,11 @@
 
 
 class Autoencoder {
+private:
+    // TODO
 
+public:
+    Autoencoder();
 };
 
 

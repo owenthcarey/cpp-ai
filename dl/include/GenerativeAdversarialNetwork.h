@@ -7,7 +7,11 @@
 
 
 class GenerativeAdversarialNetwork {
+private:
+    // TODO
 
+public:
+    GenerativeAdversarialNetwork();
 };
 
 

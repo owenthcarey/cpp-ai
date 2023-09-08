@@ -7,7 +7,11 @@
 
 
 class SupportVectorMachine {
+private:
+    // TODO
 
+public:
+    SupportVectorMachine();
 };
 
 

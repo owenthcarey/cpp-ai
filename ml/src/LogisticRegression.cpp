@@ -3,3 +3,7 @@
 //
 
 #include "../include/LogisticRegression.h"
+
+LogisticRegression::LogisticRegression() {
+    // TODO
+}

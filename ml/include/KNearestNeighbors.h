@@ -7,7 +7,11 @@
 
 
 class KNearestNeighbors {
+private:
+    // TODO
 
+public:
+    KNearestNeighbors();
 };
 
 

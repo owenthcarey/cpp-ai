@@ -3,3 +3,7 @@
 //
 
 #include "../include/RecurrentNeuralNetwork.h"
+
+RecurrentNeuralNetwork::RecurrentNeuralNetwork() {
+    // TODO
+}

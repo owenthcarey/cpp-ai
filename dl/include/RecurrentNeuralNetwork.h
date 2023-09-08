@@ -7,7 +7,11 @@
 
 
 class RecurrentNeuralNetwork {
+private:
+    // TODO
 
+public:
+    RecurrentNeuralNetwork();
 };
 
 

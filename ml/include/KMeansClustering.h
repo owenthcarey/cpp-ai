@@ -7,7 +7,11 @@
 
 
 class KMeansClustering {
+private:
+    // TODO
 
+public:
+    KMeansClustering();
 };
 
 

@@ -3,3 +3,7 @@
 //
 
 #include "../include/Autoencoder.h"
+
+Autoencoder::Autoencoder() {
+    // TODO
+}

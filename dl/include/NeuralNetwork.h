@@ -7,7 +7,11 @@
 
 
 class NeuralNetwork {
+private:
+    // TODO
 
+public:
+    NeuralNetwork();
 };
 
 

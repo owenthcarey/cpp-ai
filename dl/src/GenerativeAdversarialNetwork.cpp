@@ -3,3 +3,7 @@
 //
 
 #include "../include/GenerativeAdversarialNetwork.h"
+
+GenerativeAdversarialNetwork::GenerativeAdversarialNetwork() {
+    // TODO
+}
