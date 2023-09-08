@@ -5,5 +5,9 @@
 #include "../include/ConvolutionalNeuralNetwork.h"
 
 ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork() {
-    // TODO
+    // Constructor
+}
+
+ConvolutionalNeuralNetwork::~ConvolutionalNeuralNetwork() {
+    // Destructor
 }

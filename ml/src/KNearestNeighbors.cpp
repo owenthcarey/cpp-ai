@@ -5,5 +5,9 @@
 #include "../include/KNearestNeighbors.h"
 
 KNearestNeighbors::KNearestNeighbors() {
-    // TODO
+    // Constructor
+}
+
+KNearestNeighbors::~KNearestNeighbors() {
+    // Destructor
 }

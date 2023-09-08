@@ -12,6 +12,7 @@ private:
 
 public:
     KNearestNeighbors();
+    ~KNearestNeighbors();
 };
 
 

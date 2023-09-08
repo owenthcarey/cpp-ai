@@ -5,5 +5,9 @@
 #include "../include/LogisticRegression.h"
 
 LogisticRegression::LogisticRegression() {
-    // TODO
+    // Constructor
+}
+
+LogisticRegression::~LogisticRegression() {
+    // Destructor
 }

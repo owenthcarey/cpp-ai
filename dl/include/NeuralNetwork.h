@@ -12,6 +12,7 @@ private:
 
 public:
     NeuralNetwork();
+    ~NeuralNetwork();
 };
 
 

@@ -5,5 +5,9 @@
 #include "../include/GenerativeAdversarialNetwork.h"
 
 GenerativeAdversarialNetwork::GenerativeAdversarialNetwork() {
-    // TODO
+    // Constructor
+}
+
+GenerativeAdversarialNetwork::~GenerativeAdversarialNetwork() {
+    // Destructor
 }

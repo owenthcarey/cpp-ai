@@ -12,6 +12,7 @@ private:
 
 public:
     RecurrentNeuralNetwork();
+    ~RecurrentNeuralNetwork();
 };
 
 

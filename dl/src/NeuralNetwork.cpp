@@ -5,5 +5,9 @@
 #include "../include/NeuralNetwork.h"
 
 NeuralNetwork::NeuralNetwork() {
-    // TODO
+    // Constructor
+}
+
+NeuralNetwork::~NeuralNetwork() {
+    // Destructor
 }

@@ -5,5 +5,9 @@
 #include "../include/RecurrentNeuralNetwork.h"
 
 RecurrentNeuralNetwork::RecurrentNeuralNetwork() {
-    // TODO
+    // Constructor
+}
+
+RecurrentNeuralNetwork::~RecurrentNeuralNetwork() {
+    // Destructor
 }

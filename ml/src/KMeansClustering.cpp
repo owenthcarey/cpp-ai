@@ -5,5 +5,9 @@
 #include "../include/KMeansClustering.h"
 
 KMeansClustering::KMeansClustering() {
-    // TODO
+    // Constructor
+}
+
+KMeansClustering::~KMeansClustering() {
+    // Destructor
 }

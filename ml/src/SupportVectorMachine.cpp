@@ -5,5 +5,9 @@
 #include "../include/SupportVectorMachine.h"
 
 SupportVectorMachine::SupportVectorMachine() {
-    // TODO
+    // Constructor
+}
+
+SupportVectorMachine::~SupportVectorMachine() {
+    // Destructor
 }
