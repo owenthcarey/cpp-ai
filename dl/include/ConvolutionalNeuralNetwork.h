@@ -11,7 +11,22 @@ private:
     // TODO
 
 public:
+    // Default constructor
     ConvolutionalNeuralNetwork();
+
+    // Copy constructor
+    ConvolutionalNeuralNetwork(const ConvolutionalNeuralNetwork& other);
+
+    // Copy assignment operator
+    ConvolutionalNeuralNetwork& operator=(const ConvolutionalNeuralNetwork& other);
+
+    // Move constructor
+    ConvolutionalNeuralNetwork(ConvolutionalNeuralNetwork&& other) noexcept;
+
+    // Move assignment operator
+    ConvolutionalNeuralNetwork& operator=(ConvolutionalNeuralNetwork&& other) noexcept;
+
+    // Destructor
     ~ConvolutionalNeuralNetwork();
 };
 
