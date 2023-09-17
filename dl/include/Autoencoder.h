@@ -11,7 +11,22 @@ private:
     // TODO
 
 public:
+    // Default constructor
     Autoencoder();
+
+    // Copy constructor
+    Autoencoder(const Autoencoder& other);
+
+    // Copy assignment operator
+    Autoencoder& operator=(const Autoencoder& other);
+
+    // Move constructor
+    Autoencoder(Autoencoder&& other) noexcept;
+
+    // Move assignment operator
+    Autoencoder& operator=(Autoencoder&& other) noexcept;
+
+    // Destructor
     ~Autoencoder();
 };
 

@@ -11,7 +11,22 @@ private:
     // TODO
 
 public:
+    // Default constructor
     NeuralNetwork();
+
+    // Copy constructor
+    NeuralNetwork(const NeuralNetwork& other);
+
+    // Copy assignment operator
+    NeuralNetwork& operator=(const NeuralNetwork& other);
+
+    // Move constructor
+    NeuralNetwork(NeuralNetwork&& other) noexcept;
+
+    // Move assignment operator
+    NeuralNetwork& operator=(NeuralNetwork&& other) noexcept;
+
+    // Destructor
     ~NeuralNetwork();
 };
 
