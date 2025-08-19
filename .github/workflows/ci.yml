@@ -11,22 +11,25 @@ jobs:
     runs-on: macos-14
     env:
       CMAKE_BUILD_PARALLEL_LEVEL: 4
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup vcpkg (manifest mode)
-        id: vcpkg
-        uses: lukka/run-vcpkg@v10
-        with:
-          vcpkgJsonGlob: 'vcpkg.json'
-          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
-          vcpkgGitCommitId: 'd4b65a2b83ae6c3526acd1c6f3b51aff2a884533'
-          runVcpkgInstall: true
+      - name: Install vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git "$VCPKG_ROOT"
+          "$VCPKG_ROOT/bootstrap-vcpkg.sh" -disableMetrics
+
+      - name: Install dependencies (manifest)
+        run: |
+          "$VCPKG_ROOT/vcpkg" version || true
+          # With vcpkg.json present, run install without per-port args (manifest mode)
+          "$VCPKG_ROOT/vcpkg" install
 
       - name: Configure
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_TOOLCHAIN_FILE="${{ steps.vcpkg.outputs.vcpkgRoot }}/scripts/buildsystems/vcpkg.cmake"
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
 
       - name: Build
         run: cmake --build build --parallel
