@@ -42,25 +42,20 @@ jobs:
 
       - name: Clang-Tidy
         run: |
-          brew install llvm || true
-          which clang-tidy || echo "clang-tidy not found"
-          # Use CMake's compile_commands.json for tidy
+          brew install llvm jq || true
+          # Generate compile_commands.json for tidy
           cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
-          python3 - <<'PY' || echo 'clang-tidy step non-blocking'
-import json, subprocess, os, sys
-db = json.load(open('build/compile_commands.json'))
-files = [e['file'] for e in db if e['file'].endswith(('.cpp','.cc','.cxx'))]
-if not files:
-    sys.exit(0)
-rc = 0
-for f in files:
-    cmd = ['clang-tidy', f, '--quiet', f'--config-file=.clang-tidy', f'-p=build']
-    print('Running:', ' '.join(cmd))
-    try:
-        subprocess.check_call(cmd)
-    except subprocess.CalledProcessError as e:
-        rc = e.returncode
-sys.exit(rc)
-PY
-
-
+          # Resolve clang-tidy path (Homebrew or system)
+          CLANG_TIDY="$(brew --prefix llvm)/bin/clang-tidy"
+          if [ ! -x "$CLANG_TIDY" ]; then CLANG_TIDY="clang-tidy"; fi
+          # Run clang-tidy on files from compile_commands.json (non-blocking on failures)
+          if [ ! -f build/compile_commands.json ]; then
+            echo "compile_commands.json not found; skipping clang-tidy"
+            exit 0
+          fi
+          FILES=$(jq -r '.[].file' build/compile_commands.json | grep -E '\.(cpp|cc|cxx)$' | sort -u)
+          if [ -z "$FILES" ]; then
+            echo "No C/C++ source files found for clang-tidy"
+            exit 0
+          fi
+          echo "$FILES" | xargs -I {} bash -lc '"$0" "{}" --quiet --config-file=.clang-tidy -p=build' "$CLANG_TIDY" || echo 'clang-tidy step non-blocking'
