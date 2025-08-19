@@ -3,6 +3,10 @@
 //
 
 #include "../include/LinearRegression.h"
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <vector>
 
 // Default constructor that initializes bias to 0.
 LinearRegression::LinearRegression() : bias(0) {}

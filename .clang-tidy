@@ -1,3 +1,15 @@
+Checks: >
+  bugprone-*,
+  performance-*,
+  readability-*,
+  modernize-*,
+  cppcoreguidelines-*,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-avoid-magic-numbers
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: none
 ---
 Checks: '-*,google-*'
 WarningsAsErrors: ''

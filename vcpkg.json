@@ -4,6 +4,7 @@
   "homepage": "https://github.com/owenthcarey/cpp-ai",
   "description": "A project implementing various machine-learning and deep-learning algorithms in C++",
   "dependencies": [
-    "eigen3"
+    "eigen3",
+    "catch2"
   ]
 }
