@@ -21,6 +21,7 @@ jobs:
         with:
           vcpkgJsonGlob: 'vcpkg.json'
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+          vcpkgGitCommitId: 'd4b65a2b83ae6c3526acd1c6f3b51aff2a884533'
           runVcpkgInstall: true
 
       - name: Configure
