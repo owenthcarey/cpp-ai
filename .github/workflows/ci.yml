@@ -10,14 +10,16 @@ jobs:
   build-test:
     runs-on: macos-14
     env:
-      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
       CMAKE_BUILD_PARALLEL_LEVEL: 4
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup vcpkg
-        uses: microsoft/vcpkg-action@v1
+        uses: microsoft/setup-vcpkg@v1
+        with:
+          vcpkgJsonGlob: vcpkg.json
+          cache: true
 
       - name: Install dependencies
         run: |
@@ -25,7 +27,7 @@ jobs:
 
       - name: Configure
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DVCPKG_TARGET_TRIPLET=x64-osx -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 
       - name: Build
         run: cmake --build build --parallel
@@ -37,8 +39,12 @@ jobs:
         run: |
           brew update
           brew install clang-format || true
+          if ! command -v clang-format >/dev/null 2>&1; then
+            echo "clang-format not available; skipping check"
+            exit 0
+          fi
           FILES=$(git ls-files '*.h' '*.hpp' '*.cpp' '*.cc')
-          echo "$FILES" | xargs -I {} bash -c "diff -u <(cat '{}') <(clang-format -style=file '{}')" || (echo 'clang-format check failed'; exit 1)
+          echo "$FILES" | xargs -I {} bash -c "diff -u <(cat '{}') <(clang-format -style=file -fallback-style=llvm '{}')" || (echo 'clang-format check failed'; exit 1)
 
       - name: Clang-Tidy
         run: |
