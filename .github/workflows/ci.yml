@@ -16,20 +16,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11
-        with:
-          vcpkgDirectory: "${{ github.workspace }}/vcpkg"
-          runVcpkgInstall: true
-          vcpkgJsonGlob: vcpkg.json
+      - name: Install vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git "${{ github.workspace }}/vcpkg"
+          "${{ github.workspace }}/vcpkg/bootstrap-vcpkg.sh" -disableMetrics
+
+      - name: Install dependencies (vcpkg)
+        run: |
+          "${{ github.workspace }}/vcpkg/vcpkg" version || true
+          "${{ github.workspace }}/vcpkg/vcpkg" install eigen3 catch2
 
       - name: Install dependencies
         run: |
-          echo "Using vcpkg manifest"
+          echo "Using vcpkg classic mode (manifest disabled in CI)"
 
       - name: Configure
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DVCPKG_MANIFEST_MODE=OFF -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 
       - name: Build
         run: cmake --build build --parallel
@@ -52,7 +55,7 @@ jobs:
         run: |
           brew install llvm jq || true
           # Generate compile_commands.json for tidy
-          cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+          cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DVCPKG_MANIFEST_MODE=OFF -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
           # Resolve clang-tidy path (Homebrew or system)
           CLANG_TIDY="$(brew --prefix llvm)/bin/clang-tidy"
           if [ ! -x "$CLANG_TIDY" ]; then CLANG_TIDY="clang-tidy"; fi
