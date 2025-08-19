@@ -33,6 +33,7 @@
 
 # Build directory
 /cmake-build-debug/
+/build/
 
 # JetBrains
 /.idea/

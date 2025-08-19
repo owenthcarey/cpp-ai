@@ -15,17 +15,10 @@ git clone https://github.com/microsoft/vcpkg.git "$HOME/vcpkg"
 "$HOME/vcpkg"/bootstrap-vcpkg.sh
 export VCPKG_ROOT="$HOME/vcpkg"
 
-# 3) Configure (uses vcpkg manifest for dependencies like eigen3)
-cmake -S . -B build -G Ninja \
-  -DCMAKE_BUILD_TYPE=Debug \
-  -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" \
-  -DVCPKG_FEATURE_FLAGS=manifests
-
-# 4) Build
-cmake --build build -j
-
-# 5) Run
-./build/cpp_ai
+# Build and run
+./build.sh            # Release, ML-only (default)
+./build.sh Debug      # Debug, ML-only
+./build.sh --with-dl  # Release, include WIP DL sources (may not compile yet)
 ```
 
 Notes:

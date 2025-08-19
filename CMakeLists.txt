@@ -9,7 +9,13 @@ set(CMAKE_CXX_STANDARD 23)
 
 find_package(Eigen3 CONFIG REQUIRED)
 
-add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegression.h
+# Optionally include WIP deep-learning sources that currently contain placeholders
+option(CPP_AI_BUILD_DL "Build deep learning sources (WIP)" OFF)
+
+set(ML_SOURCES
+        main.cpp
+        ml/src/LinearRegression.cpp
+        ml/include/LinearRegression.h
         ml/src/LogisticRegression.cpp
         ml/include/LogisticRegression.h
         ml/src/KNearestNeighbors.cpp
@@ -17,7 +23,9 @@ add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegr
         ml/src/SupportVectorMachine.cpp
         ml/include/SupportVectorMachine.h
         ml/src/KMeansClustering.cpp
-        ml/include/KMeansClustering.h
+        ml/include/KMeansClustering.h)
+
+set(DL_SOURCES
         dl/src/NeuralNetwork.cpp
         dl/include/NeuralNetwork.h
         dl/src/ConvolutionalNeuralNetwork.cpp
@@ -28,6 +36,12 @@ add_executable(cpp_ai main.cpp ml/src/LinearRegression.cpp ml/include/LinearRegr
         dl/include/GenerativeAdversarialNetwork.h
         dl/src/Autoencoder.cpp
         dl/include/Autoencoder.h)
+
+add_executable(cpp_ai ${ML_SOURCES})
+
+if(CPP_AI_BUILD_DL)
+    target_sources(cpp_ai PRIVATE ${DL_SOURCES})
+endif()
 
 # Link Eigen3 to your target
 target_link_libraries(cpp_ai Eigen3::Eigen)

@@ -2,6 +2,19 @@
 
 This project is an exercise in implementing various machine-learning and deep-learning algorithms from scratch in C++. The goal is to understand the internals of these algorithms, how they work, and how to optimize them, while honing skills in C++.
 
+## Build and run
+
+From the repo root:
+
+```bash
+# From repo root
+./build.sh            # Release, ML-only (default)
+./build.sh Debug      # Debug, ML-only
+./build.sh --with-dl  # Release, include WIP DL sources (may not compile yet)
+```
+
+The script configures with CMake, builds, and then runs the `cpp_ai` executable. It also honors `VCPKG_ROOT` if set to override the vcpkg toolchain path.
+
 ## Machine Learning Algorithms
 
 1. Linear Regression: Implemented. A simple yet powerful algorithm used for predicting a continuous target variable.
