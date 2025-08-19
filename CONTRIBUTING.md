@@ -114,6 +114,7 @@ Recommended scopes (choose the smallest, most accurate unit; prefer module or di
   - `deps` – dependency updates and version pins
   - `repo` – top‑level repository metadata (`README.md`, `CONTRIBUTING.md`, license)
   - `docs` – broader documentation updates
+  - `tests` – unit/integration tests under `tests/`
   - `workflows` – CI pipelines under `.github/workflows/` (if/when added)
 
 Note: Avoid redundant type==scope pairs (e.g., `docs(docs)`). Prefer a module scope (e.g., `docs(ml)`) or `docs(repo)` for top‑level updates.
