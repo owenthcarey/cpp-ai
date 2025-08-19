@@ -12,11 +12,11 @@
 LinearRegression::LinearRegression() : bias(0) {}
 
 // Copy constructor
-LinearRegression::LinearRegression(const LinearRegression &other)
+LinearRegression::LinearRegression(const LinearRegression& other)
     : weights(other.weights), bias(other.bias) {}
 
 // Copy assignment operator
-LinearRegression &LinearRegression::operator=(const LinearRegression &other) {
+LinearRegression& LinearRegression::operator=(const LinearRegression& other) {
     if (this != &other) {
         weights = other.weights;
         bias = other.bias;
@@ -25,11 +25,11 @@ LinearRegression &LinearRegression::operator=(const LinearRegression &other) {
 }
 
 // Move constructor
-LinearRegression::LinearRegression(LinearRegression &&other) noexcept
+LinearRegression::LinearRegression(LinearRegression&& other) noexcept
     : weights(std::move(other.weights)), bias(other.bias) {}
 
 // Move assignment operator
-LinearRegression &LinearRegression::operator=(LinearRegression &&other) noexcept {
+LinearRegression& LinearRegression::operator=(LinearRegression&& other) noexcept {
     if (this != &other) {
         weights = std::move(other.weights);
         bias = other.bias;
@@ -46,14 +46,13 @@ LinearRegression::~LinearRegression() {}
 // - y: target vector.
 // - learning_rate: the learning rate for gradient-descent training.
 // - iterations: the number of iterations for gradient-descent training.
-void LinearRegression::train(const Eigen::MatrixXd &X, const Eigen::VectorXd &y,
+void LinearRegression::train(const Eigen::MatrixXd& X, const Eigen::VectorXd& y,
                              double learning_rate, int iterations) {
     int n_samples = X.rows();
     int n_features = X.cols();
     weights = Eigen::VectorXd::Zero(n_features);
     for (int i = 0; i < iterations; i++) {
-        Eigen::VectorXd y_pred =
-                X * weights + Eigen::VectorXd::Constant(n_samples, bias);
+        Eigen::VectorXd y_pred = X * weights + Eigen::VectorXd::Constant(n_samples, bias);
         Eigen::VectorXd diff = y_pred - y;
         weights -= (learning_rate / n_samples) * (X.transpose() * diff);
         bias -= (learning_rate / n_samples) * diff.sum();
@@ -65,17 +64,16 @@ void LinearRegression::train(const Eigen::MatrixXd &X, const Eigen::VectorXd &y,
 // - X: feature matrix.
 // Returns:
 // - Predicted output vector.
-Eigen::VectorXd LinearRegression::predict(const Eigen::MatrixXd &X) const {
+Eigen::VectorXd LinearRegression::predict(const Eigen::MatrixXd& X) const {
     return X * weights + Eigen::VectorXd::Constant(X.rows(), bias);
 }
 
 // Splits data into training, validation, and test sets.
-void
-LinearRegression::splitData(const Eigen::MatrixXd &X, const Eigen::VectorXd &y,
-                            Eigen::MatrixXd &X_train, Eigen::VectorXd &y_train,
-                            Eigen::MatrixXd &X_val, Eigen::VectorXd &y_val,
-                            Eigen::MatrixXd &X_test, Eigen::VectorXd &y_test,
-                            double train_size, double val_size) {
+void LinearRegression::splitData(const Eigen::MatrixXd& X, const Eigen::VectorXd& y,
+                                 Eigen::MatrixXd& X_train, Eigen::VectorXd& y_train,
+                                 Eigen::MatrixXd& X_val, Eigen::VectorXd& y_val,
+                                 Eigen::MatrixXd& X_test, Eigen::VectorXd& y_test,
+                                 double train_size, double val_size) {
     int n_samples = X.rows();
     int train_samples = int(n_samples * train_size);
     int val_samples = int(n_samples * val_size);

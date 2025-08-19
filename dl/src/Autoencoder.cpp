@@ -5,27 +5,21 @@
 #include "../include/Autoencoder.h"
 
 // Default constructor
-Autoencoder::Autoencoder() {
-}
+Autoencoder::Autoencoder() {}
 
 // Copy constructor
-Autoencoder::Autoencoder(const Autoencoder &other) {
-}
+Autoencoder::Autoencoder(const Autoencoder& other) {}
 
 // Copy assignment operator
-Autoencoder &Autoencoder::operator=(const Autoencoder &other) {
-    return <#initializer#>;
+Autoencoder& Autoencoder::operator=(const Autoencoder& other){return <#initializer #>;
 }
 
 // Move constructor
-Autoencoder::Autoencoder(Autoencoder &&other) noexcept {
-}
+Autoencoder::Autoencoder(Autoencoder&& other) noexcept {}
 
 // Move assignment operator
-Autoencoder &Autoencoder::operator=(Autoencoder &&other) noexcept {
-    return <#initializer#>;
+Autoencoder& Autoencoder::operator=(Autoencoder&& other) noexcept {return <#initializer #>;
 }
 
 // Destructor
-Autoencoder::~Autoencoder() {
-}
+Autoencoder::~Autoencoder() {}

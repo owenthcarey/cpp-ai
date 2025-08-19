@@ -5,12 +5,11 @@
 #ifndef CPP_AI_AUTOENCODER_H
 #define CPP_AI_AUTOENCODER_H
 
-
 class Autoencoder {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     Autoencoder();
 
@@ -30,5 +29,4 @@ public:
     ~Autoencoder();
 };
 
-
-#endif //CPP_AI_AUTOENCODER_H
+#endif // CPP_AI_AUTOENCODER_H

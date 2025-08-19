@@ -5,12 +5,11 @@
 #ifndef CPP_AI_RECURRENTNEURALNETWORK_H
 #define CPP_AI_RECURRENTNEURALNETWORK_H
 
-
 class RecurrentNeuralNetwork {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     RecurrentNeuralNetwork();
 
@@ -30,5 +29,4 @@ public:
     ~RecurrentNeuralNetwork();
 };
 
-
-#endif //CPP_AI_RECURRENTNEURALNETWORK_H
+#endif // CPP_AI_RECURRENTNEURALNETWORK_H

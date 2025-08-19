@@ -5,12 +5,11 @@
 #ifndef CPP_AI_KNEARESTNEIGHBORS_H
 #define CPP_AI_KNEARESTNEIGHBORS_H
 
-
 class KNearestNeighbors {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     KNearestNeighbors();
 
@@ -30,5 +29,4 @@ public:
     ~KNearestNeighbors();
 };
 
-
-#endif //CPP_AI_KNEARESTNEIGHBORS_H
+#endif // CPP_AI_KNEARESTNEIGHBORS_H

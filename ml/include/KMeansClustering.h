@@ -5,12 +5,11 @@
 #ifndef CPP_AI_KMEANSCLUSTERING_H
 #define CPP_AI_KMEANSCLUSTERING_H
 
-
 class KMeansClustering {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     KMeansClustering();
 
@@ -30,5 +29,4 @@ public:
     ~KMeansClustering();
 };
 
-
-#endif //CPP_AI_KMEANSCLUSTERING_H
+#endif // CPP_AI_KMEANSCLUSTERING_H

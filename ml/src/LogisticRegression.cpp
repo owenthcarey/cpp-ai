@@ -12,11 +12,11 @@
 LogisticRegression::LogisticRegression() : bias(0) {}
 
 // Copy constructor
-LogisticRegression::LogisticRegression(const LogisticRegression &other)
+LogisticRegression::LogisticRegression(const LogisticRegression& other)
     : weights(other.weights), bias(other.bias) {}
 
 // Copy assignment operator
-LogisticRegression &LogisticRegression::operator=(const LogisticRegression &other) {
+LogisticRegression& LogisticRegression::operator=(const LogisticRegression& other) {
     if (this != &other) {
         weights = other.weights;
         bias = other.bias;
@@ -25,11 +25,11 @@ LogisticRegression &LogisticRegression::operator=(const LogisticRegression &othe
 }
 
 // Move constructor
-LogisticRegression::LogisticRegression(LogisticRegression &&other) noexcept
+LogisticRegression::LogisticRegression(LogisticRegression&& other) noexcept
     : weights(std::move(other.weights)), bias(other.bias) {}
 
 // Move assignment operator
-LogisticRegression &LogisticRegression::operator=(LogisticRegression &&other) noexcept {
+LogisticRegression& LogisticRegression::operator=(LogisticRegression&& other) noexcept {
     if (this != &other) {
         weights = std::move(other.weights);
         bias = other.bias;
@@ -41,7 +41,7 @@ LogisticRegression &LogisticRegression::operator=(LogisticRegression &&other) no
 LogisticRegression::~LogisticRegression() {}
 
 // Train using gradient descent on logistic loss
-void LogisticRegression::train(const Eigen::MatrixXd &X, const Eigen::VectorXd &y,
+void LogisticRegression::train(const Eigen::MatrixXd& X, const Eigen::VectorXd& y,
                                double learning_rate, int iterations) {
     int n_samples = X.rows();
     int n_features = X.cols();
@@ -64,17 +64,17 @@ void LogisticRegression::train(const Eigen::MatrixXd &X, const Eigen::VectorXd &
 }
 
 // Predict probabilities P(y=1|x)
-Eigen::VectorXd LogisticRegression::predict(const Eigen::MatrixXd &X) const {
+Eigen::VectorXd LogisticRegression::predict(const Eigen::MatrixXd& X) const {
     Eigen::VectorXd linear_output = X * weights + Eigen::VectorXd::Constant(X.rows(), bias);
     Eigen::ArrayXd probabilities = 1.0 / (1.0 + (-linear_output.array()).exp());
     return probabilities.matrix();
 }
 
 // Split data into train/val/test, with shuffling
-void LogisticRegression::splitData(const Eigen::MatrixXd &X, const Eigen::VectorXd &y,
-                                   Eigen::MatrixXd &X_train, Eigen::VectorXd &y_train,
-                                   Eigen::MatrixXd &X_val, Eigen::VectorXd &y_val,
-                                   Eigen::MatrixXd &X_test, Eigen::VectorXd &y_test,
+void LogisticRegression::splitData(const Eigen::MatrixXd& X, const Eigen::VectorXd& y,
+                                   Eigen::MatrixXd& X_train, Eigen::VectorXd& y_train,
+                                   Eigen::MatrixXd& X_val, Eigen::VectorXd& y_val,
+                                   Eigen::MatrixXd& X_test, Eigen::VectorXd& y_test,
                                    double train_size, double val_size) {
     int n_samples = X.rows();
     int train_samples = static_cast<int>(n_samples * train_size);

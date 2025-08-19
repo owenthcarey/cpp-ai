@@ -5,12 +5,11 @@
 #ifndef CPP_AI_CONVOLUTIONALNEURALNETWORK_H
 #define CPP_AI_CONVOLUTIONALNEURALNETWORK_H
 
-
 class ConvolutionalNeuralNetwork {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     ConvolutionalNeuralNetwork();
 
@@ -30,5 +29,4 @@ public:
     ~ConvolutionalNeuralNetwork();
 };
 
-
-#endif //CPP_AI_CONVOLUTIONALNEURALNETWORK_H
+#endif // CPP_AI_CONVOLUTIONALNEURALNETWORK_H

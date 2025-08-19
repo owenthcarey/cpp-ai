@@ -5,32 +5,28 @@
 #ifndef CPP_AI_GENERATIVEADVERSARIALNETWORK_H
 #define CPP_AI_GENERATIVEADVERSARIALNETWORK_H
 
-
 class GenerativeAdversarialNetwork {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     GenerativeAdversarialNetwork();
 
     // Copy constructor
-    GenerativeAdversarialNetwork(const GenerativeAdversarialNetwork &other);
+    GenerativeAdversarialNetwork(const GenerativeAdversarialNetwork& other);
 
     // Copy assignment operator
-    GenerativeAdversarialNetwork &
-    operator=(const GenerativeAdversarialNetwork &other);
+    GenerativeAdversarialNetwork& operator=(const GenerativeAdversarialNetwork& other);
 
     // Move constructor
-    GenerativeAdversarialNetwork(GenerativeAdversarialNetwork &&other) noexcept;
+    GenerativeAdversarialNetwork(GenerativeAdversarialNetwork&& other) noexcept;
 
     // Move assignment operator
-    GenerativeAdversarialNetwork &
-    operator=(GenerativeAdversarialNetwork &&other) noexcept;
+    GenerativeAdversarialNetwork& operator=(GenerativeAdversarialNetwork&& other) noexcept;
 
     // Destructor
     ~GenerativeAdversarialNetwork();
 };
 
-
-#endif //CPP_AI_GENERATIVEADVERSARIALNETWORK_H
+#endif // CPP_AI_GENERATIVEADVERSARIALNETWORK_H

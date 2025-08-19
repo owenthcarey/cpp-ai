@@ -5,31 +5,24 @@
 #include "../include/ConvolutionalNeuralNetwork.h"
 
 // Default constructor
-ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork() {
-}
+ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork() {}
 
 // Copy constructor
-ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork(
-        const ConvolutionalNeuralNetwork &other) {
-}
+ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork(const ConvolutionalNeuralNetwork& other) {}
 
 // Copy assignment operator
-ConvolutionalNeuralNetwork &
-ConvolutionalNeuralNetwork::operator=(const ConvolutionalNeuralNetwork &other) {
-    return <#initializer#>;
+ConvolutionalNeuralNetwork& ConvolutionalNeuralNetwork::operator=(
+    const ConvolutionalNeuralNetwork& other){return <#initializer #>;
 }
 
 // Move constructor
 ConvolutionalNeuralNetwork::ConvolutionalNeuralNetwork(
-        ConvolutionalNeuralNetwork &&other) noexcept {
-}
+    ConvolutionalNeuralNetwork&& other) noexcept {}
 
 // Move assignment operator
-ConvolutionalNeuralNetwork &ConvolutionalNeuralNetwork::operator=(
-        ConvolutionalNeuralNetwork &&other) noexcept {
-    return <#initializer#>;
+ConvolutionalNeuralNetwork& ConvolutionalNeuralNetwork::operator=(
+    ConvolutionalNeuralNetwork&& other) noexcept {return <#initializer #>;
 }
 
 // Destructor
-ConvolutionalNeuralNetwork::~ConvolutionalNeuralNetwork() {
-}
+ConvolutionalNeuralNetwork::~ConvolutionalNeuralNetwork() {}

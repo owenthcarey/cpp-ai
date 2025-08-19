@@ -5,12 +5,11 @@
 #ifndef CPP_AI_SUPPORTVECTORMACHINE_H
 #define CPP_AI_SUPPORTVECTORMACHINE_H
 
-
 class SupportVectorMachine {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     SupportVectorMachine();
 
@@ -30,5 +29,4 @@ public:
     ~SupportVectorMachine();
 };
 
-
-#endif //CPP_AI_SUPPORTVECTORMACHINE_H
+#endif // CPP_AI_SUPPORTVECTORMACHINE_H

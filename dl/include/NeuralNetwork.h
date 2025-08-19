@@ -5,12 +5,11 @@
 #ifndef CPP_AI_NEURALNETWORK_H
 #define CPP_AI_NEURALNETWORK_H
 
-
 class NeuralNetwork {
-private:
+  private:
     // TODO
 
-public:
+  public:
     // Default constructor
     NeuralNetwork();
 
@@ -30,5 +29,4 @@ public:
     ~NeuralNetwork();
 };
 
-
-#endif //CPP_AI_NEURALNETWORK_H
+#endif // CPP_AI_NEURALNETWORK_H

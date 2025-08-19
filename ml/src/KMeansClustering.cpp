@@ -5,27 +5,19 @@
 #include "../include/KMeansClustering.h"
 
 // Default constructor
-KMeansClustering::KMeansClustering() {
-}
+KMeansClustering::KMeansClustering() {}
 
 // Copy constructor
-KMeansClustering::KMeansClustering(const KMeansClustering &other) {
-}
+KMeansClustering::KMeansClustering(const KMeansClustering& other) {}
 
 // Copy assignment operator
-KMeansClustering &KMeansClustering::operator=(const KMeansClustering &other) {
-    return *this;
-}
+KMeansClustering& KMeansClustering::operator=(const KMeansClustering& other) { return *this; }
 
 // Move constructor
-KMeansClustering::KMeansClustering(KMeansClustering &&other) noexcept {
-}
+KMeansClustering::KMeansClustering(KMeansClustering&& other) noexcept {}
 
 // Move assignment operator
-KMeansClustering &KMeansClustering::operator=(KMeansClustering &&other) noexcept {
-    return *this;
-}
+KMeansClustering& KMeansClustering::operator=(KMeansClustering&& other) noexcept { return *this; }
 
 // Destructor
-KMeansClustering::~KMeansClustering() {
-}
+KMeansClustering::~KMeansClustering() {}

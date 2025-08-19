@@ -1,6 +1,6 @@
-#include <catch2/catch_test_macros.hpp>
 #include <Eigen/Dense>
 #include <LinearRegression.h>
+#include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("LinearRegression learns simple linear relationship", "[linear]") {
     // y = 2*x0 - 3*x1 + 5
