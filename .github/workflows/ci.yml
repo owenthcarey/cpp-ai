@@ -10,29 +10,20 @@ jobs:
   build-test:
     runs-on: macos-14
     env:
-      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
       CMAKE_BUILD_PARALLEL_LEVEL: 4
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install vcpkg
-        run: |
-          git clone https://github.com/microsoft/vcpkg.git "${{ github.workspace }}/vcpkg"
-          "${{ github.workspace }}/vcpkg/bootstrap-vcpkg.sh" -disableMetrics
-
-      - name: Install dependencies (vcpkg)
-        run: |
-          "${{ github.workspace }}/vcpkg/vcpkg" version || true
-          "${{ github.workspace }}/vcpkg/vcpkg" install eigen3 catch2
-
-      - name: Install dependencies
-        run: |
-          echo "Using vcpkg classic mode (manifest disabled in CI)"
+      - name: Setup vcpkg (manifest mode)
+        uses: microsoft/setup-vcpkg@v1
+        with:
+          vcpkgJsonPath: vcpkg.json
+          disableMetrics: true
 
       - name: Configure
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DVCPKG_MANIFEST_MODE=OFF -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 
       - name: Build
         run: cmake --build build --parallel
@@ -54,12 +45,10 @@ jobs:
       - name: Clang-Tidy
         run: |
           brew install llvm jq || true
-          # Generate compile_commands.json for tidy
-          cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DVCPKG_MANIFEST_MODE=OFF -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
           # Resolve clang-tidy path (Homebrew or system)
           CLANG_TIDY="$(brew --prefix llvm)/bin/clang-tidy"
           if [ ! -x "$CLANG_TIDY" ]; then CLANG_TIDY="clang-tidy"; fi
-          # Run clang-tidy on files from compile_commands.json (non-blocking on failures)
+          # Use compile_commands.json from the earlier configure step
           if [ ! -f build/compile_commands.json ]; then
             echo "compile_commands.json not found; skipping clang-tidy"
             exit 0
@@ -69,4 +58,4 @@ jobs:
             echo "No C/C++ source files found for clang-tidy"
             exit 0
           fi
-          echo "$FILES" | xargs -I {} bash -lc '"$0" "{}" --quiet --config-file=.clang-tidy -p=build' "$CLANG_TIDY" || echo 'clang-tidy step non-blocking'
+          echo "$FILES" | xargs -I {} bash -lc '"$0" "{}" --quiet -p=build' "$CLANG_TIDY" || echo 'clang-tidy step non-blocking'
