@@ -14,7 +14,23 @@ private:
     double bias;
 
 public:
+    // Default constructor
     LinearRegression();
+
+    // Copy constructor
+    LinearRegression(const LinearRegression& other);
+
+    // Copy assignment operator
+    LinearRegression& operator=(const LinearRegression& other);
+
+    // Move constructor
+    LinearRegression(LinearRegression&& other) noexcept;
+
+    // Move assignment operator
+    LinearRegression& operator=(LinearRegression&& other) noexcept;
+
+    // Destructor
+    ~LinearRegression();
     void train(const Eigen::MatrixXd &X, const Eigen::VectorXd &y,
                double learning_rate, int iterations);
     Eigen::VectorXd predict(const Eigen::MatrixXd &X) const;

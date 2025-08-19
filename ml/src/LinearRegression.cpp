@@ -7,6 +7,35 @@
 // Default constructor that initializes bias to 0.
 LinearRegression::LinearRegression() : bias(0) {}
 
+// Copy constructor
+LinearRegression::LinearRegression(const LinearRegression &other)
+    : weights(other.weights), bias(other.bias) {}
+
+// Copy assignment operator
+LinearRegression &LinearRegression::operator=(const LinearRegression &other) {
+    if (this != &other) {
+        weights = other.weights;
+        bias = other.bias;
+    }
+    return *this;
+}
+
+// Move constructor
+LinearRegression::LinearRegression(LinearRegression &&other) noexcept
+    : weights(std::move(other.weights)), bias(other.bias) {}
+
+// Move assignment operator
+LinearRegression &LinearRegression::operator=(LinearRegression &&other) noexcept {
+    if (this != &other) {
+        weights = std::move(other.weights);
+        bias = other.bias;
+    }
+    return *this;
+}
+
+// Destructor
+LinearRegression::~LinearRegression() {}
+
 // Trains the linear-regression model.
 // Parameters:
 // - X: feature matrix.

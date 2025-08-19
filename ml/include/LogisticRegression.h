@@ -11,7 +11,22 @@ private:
     // TODO
 
 public:
+    // Default constructor
     LogisticRegression();
+
+    // Copy constructor
+    LogisticRegression(const LogisticRegression& other);
+
+    // Copy assignment operator
+    LogisticRegression& operator=(const LogisticRegression& other);
+
+    // Move constructor
+    LogisticRegression(LogisticRegression&& other) noexcept;
+
+    // Move assignment operator
+    LogisticRegression& operator=(LogisticRegression&& other) noexcept;
+
+    // Destructor
     ~LogisticRegression();
 };
 
