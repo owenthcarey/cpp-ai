@@ -1,5 +1,6 @@
 #include "ml/include/LinearRegression.h"
 #include "ml/include/LogisticRegression.h"
+#include "ml/include/KNearestNeighbors.h"
 #include <iostream>
 
 // Function to test the linear-regression model.
@@ -62,8 +63,49 @@ void testLogisticRegression() {
     std::cout << "Logistic Regression Test accuracy: " << test_acc << std::endl;
 }
 
+// Function to test the K-Nearest Neighbors model.
+void testKNearestNeighbors() {
+    const int points_per_class = 60;
+    const int n = points_per_class * 2;
+    Eigen::MatrixXd X(n, 2);
+    Eigen::VectorXd y(n);
+
+    for (int i = 0; i < points_per_class; ++i) {
+        X(i, 0) = -1.0 + 0.05 * (i % 10);
+        X(i, 1) = -1.0 + 0.05 * (i / 10);
+        y(i) = 0.0;
+    }
+    for (int i = 0; i < points_per_class; ++i) {
+        int idx = points_per_class + i;
+        X(idx, 0) = 1.0 + 0.05 * (i % 10);
+        X(idx, 1) = 1.0 + 0.05 * (i / 10);
+        y(idx) = 1.0;
+    }
+
+    Eigen::MatrixXd X_train, X_val, X_test;
+    Eigen::VectorXd y_train, y_val, y_test;
+    KNearestNeighbors::splitData(X, y, X_train, y_train, X_val, y_val, X_test, y_test);
+
+    KNearestNeighbors knn;
+    knn.train(X_train, y_train, 5);
+
+    auto compute_accuracy = [](const Eigen::VectorXd& preds, const Eigen::VectorXd& labels) {
+        int correct = 0;
+        for (int i = 0; i < preds.size(); ++i) {
+            if (static_cast<int>(preds(i)) == static_cast<int>(labels(i))) correct++;
+        }
+        return static_cast<double>(correct) / static_cast<double>(preds.size());
+    };
+
+    Eigen::VectorXd y_val_pred = knn.predict(X_val);
+    Eigen::VectorXd y_test_pred = knn.predict(X_test);
+    std::cout << "KNN Validation accuracy: " << compute_accuracy(y_val_pred, y_val) << std::endl;
+    std::cout << "KNN Test accuracy: " << compute_accuracy(y_test_pred, y_test) << std::endl;
+}
+
 int main() {
     testLinearRegression();
     testLogisticRegression();
+    testKNearestNeighbors();
     return 0;
 }

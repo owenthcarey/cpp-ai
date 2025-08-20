@@ -37,6 +37,9 @@ jobs:
       - name: Run unit tests
         run: ctest --test-dir build --output-on-failure
 
+      - name: Run example binary
+        run: ./build/cpp_ai | tail -n +1
+
       - name: Clang-Format check
         run: |
           brew update
