@@ -1,4 +1,15 @@
-# C++ Artificial Intelligence
+# C++ AI
+
+<div align="center">
+<pre>
+_________                              _____  .___ 
+\_   ___ \     .__         .__        /  _  \ |   |
+/    \  \/   __|  |___   __|  |___   /  /_\  \|   |
+\     \____ /__    __/  /__    __/  /    |    \   |
+ \______  /    |__|        |__|     \____|__  /___|
+        \/                                  \/     
+</pre>
+</div>
 
 This project is an exercise in implementing various machine-learning and deep-learning algorithms from scratch in C++. The goal is to understand the internals of these algorithms, how they work, and how to optimize them, while honing skills in C++.
 
