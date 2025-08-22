@@ -43,8 +43,7 @@ KNearestNeighbors& KNearestNeighbors::operator=(KNearestNeighbors&& other) noexc
 // Destructor
 KNearestNeighbors::~KNearestNeighbors() {}
 
-void KNearestNeighbors::train(const Eigen::MatrixXd& X, const Eigen::VectorXd& y,
-                              int k_neighbors) {
+void KNearestNeighbors::train(const Eigen::MatrixXd& X, const Eigen::VectorXd& y, int k_neighbors) {
     X_train = X;
     y_train = y;
     k = std::max(1, std::min(k_neighbors, static_cast<int>(X_train.rows())));
@@ -69,8 +68,7 @@ Eigen::VectorXd KNearestNeighbors::predict(const Eigen::MatrixXd& X) const {
         const int k_effective = std::min(k, static_cast<int>(distance_index_pairs.size()));
         if (k_effective > 0 && k_effective < static_cast<int>(distance_index_pairs.size())) {
             std::nth_element(distance_index_pairs.begin(),
-                             distance_index_pairs.begin() + k_effective,
-                             distance_index_pairs.end(),
+                             distance_index_pairs.begin() + k_effective, distance_index_pairs.end(),
                              [](const auto& a, const auto& b) { return a.first < b.first; });
         } else {
             // When k_effective equals size or zero, skip nth_element; the entire list is considered

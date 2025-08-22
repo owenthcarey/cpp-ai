@@ -1,6 +1,6 @@
+#include "ml/include/KNearestNeighbors.h"
 #include "ml/include/LinearRegression.h"
 #include "ml/include/LogisticRegression.h"
-#include "ml/include/KNearestNeighbors.h"
 #include <iostream>
 
 // Function to test the linear-regression model.
@@ -92,7 +92,8 @@ void testKNearestNeighbors() {
     auto compute_accuracy = [](const Eigen::VectorXd& preds, const Eigen::VectorXd& labels) {
         int correct = 0;
         for (int i = 0; i < preds.size(); ++i) {
-            if (static_cast<int>(preds(i)) == static_cast<int>(labels(i))) correct++;
+            if (static_cast<int>(preds(i)) == static_cast<int>(labels(i)))
+                correct++;
         }
         return static_cast<double>(correct) / static_cast<double>(preds.size());
     };
