@@ -1,6 +1,7 @@
 #include "ml/include/KNearestNeighbors.h"
 #include "ml/include/LinearRegression.h"
 #include "ml/include/LogisticRegression.h"
+#include "ml/include/SupportVectorMachine.h"
 #include "ml/include/KMeansClustering.h"
 #include <iostream>
 
@@ -109,6 +110,30 @@ int main() {
     testLinearRegression();
     testLogisticRegression();
     testKNearestNeighbors();
+    // Simple SVM demo
+    {
+        const int n = 200;
+        Eigen::MatrixXd X(n, 2);
+        Eigen::VectorXd y(n);
+        for (int i = 0; i < n; ++i) {
+            double a = static_cast<double>(i % 40) / 40.0;
+            double b = static_cast<double>((i * 9) % 40) / 40.0;
+            X(i, 0) = a;
+            X(i, 1) = b;
+            y(i) = (a - b >= 0.02) ? 1.0 : 0.0;
+        }
+        Eigen::MatrixXd X_train, X_val, X_test;
+        Eigen::VectorXd y_train, y_val, y_test;
+        SupportVectorMachine::splitData(X, y, X_train, y_train, X_val, y_val, X_test, y_test);
+
+        SupportVectorMachine svm;
+        svm.train(X_train, y_train, 0.5, 1200, 1.0);
+        auto acc = [](const Eigen::VectorXd& preds, const Eigen::VectorXd& labels) {
+            return (preds.array() == labels.array()).cast<double>().mean();
+        };
+        std::cout << "SVM Validation accuracy: " << acc(svm.predict(X_val), y_val) << std::endl;
+        std::cout << "SVM Test accuracy: " << acc(svm.predict(X_test), y_test) << std::endl;
+    }
     // Simple KMeans demo
     {
         const int points_per_class = 40;
