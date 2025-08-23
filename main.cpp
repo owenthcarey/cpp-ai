@@ -1,6 +1,7 @@
 #include "ml/include/KNearestNeighbors.h"
 #include "ml/include/LinearRegression.h"
 #include "ml/include/LogisticRegression.h"
+#include "ml/include/KMeansClustering.h"
 #include <iostream>
 
 // Function to test the linear-regression model.
@@ -108,5 +109,23 @@ int main() {
     testLinearRegression();
     testLogisticRegression();
     testKNearestNeighbors();
+    // Simple KMeans demo
+    {
+        const int points_per_class = 40;
+        const int n = points_per_class * 2;
+        Eigen::MatrixXd X(n, 2);
+        for (int i = 0; i < points_per_class; ++i) {
+            X(i, 0) = -1.0 + 0.08 * (i % 5);
+            X(i, 1) = -1.0 + 0.08 * (i / 5);
+        }
+        for (int i = 0; i < points_per_class; ++i) {
+            int idx = points_per_class + i;
+            X(idx, 0) = 1.0 + 0.08 * (i % 5);
+            X(idx, 1) = 1.0 + 0.08 * (i / 5);
+        }
+        KMeansClustering km;
+        km.train(X, 2, 100);
+        std::cout << "KMeans centroids:\n" << km.getCentroids() << std::endl;
+    }
     return 0;
 }

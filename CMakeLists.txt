@@ -60,7 +60,8 @@ if(BUILD_TESTING)
     add_executable(cpp_ai_tests
             tests/test_linear_regression.cpp
             tests/test_logistic_regression.cpp
-            tests/test_knn.cpp)
+            tests/test_knn.cpp
+            tests/test_kmeans.cpp)
     target_link_libraries(cpp_ai_tests PRIVATE cpp_ai_lib Catch2::Catch2WithMain Eigen3::Eigen)
     include(Catch)
     catch_discover_tests(cpp_ai_tests)
